@@ -1,0 +1,2 @@
+seg_level,sthresh,mthresh,close,use_otsu,a_t,a_h,max_n_holes,vis_level,line_thickness,white_thresh,black_thresh,use_padding,contour_fn,keep_ids,exclude_ids
+0,0.8,3,5,1,0.2,0.05,10,0,2,220,30,0,center,none,none
