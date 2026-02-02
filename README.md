@@ -33,7 +33,7 @@ python3 create_patches_fp.py \
   --patch_size 256 \
   --preset dsp.csv \
   --seg --patch --stitch \
-  > tma_segmentation.log 2>&1 &
+  >tma_segmentation.log 2>&1 &
 ```
 
 ### XSPATIO-FEAT
@@ -47,7 +47,7 @@ python3 extract_features_fp.py \
   --feat_dir tma_extracted_features \
   --batch_size 512 \
   --slide_ext .jpg \
-  > tma_feature_extraction.log 2>&1 &
+  >tma_feature_extraction.log 2>&1 &
 ```
 
 tma_extracted_features/
@@ -122,7 +122,7 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
   --log_data \
   --data_root_dir GENE_EXP \
   --embed_dim 1024 \
-  > train.txt 2>&1 &
+  >train.txt 2>&1 &
 ```
 To evaluate the script execute the command below:
 
@@ -136,7 +136,7 @@ CUDA_VISIBLE_DEVICES=0 python3 eval.py \
   --results_dir results \
   --data_root_dir GENE_EXP \
   --embed_dim 1024 \
-  > eval.txt 2>&1 &
+  >eval.txt 2>&1 &
 
 ```
 
