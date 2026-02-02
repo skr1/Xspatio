@@ -17,10 +17,12 @@ XSPATIO consists of five modular stages:
 ### XSPATIO-SEG
 ## Input Slides
 
+```bash
 ORIGINAL_ROI_FOLDER/
 ├── ROI_1.jpg
 ├── ROI_2.jpg
 └── ...
+```
 
 Once we have the ROIs, we proceed with segmenting regions of interest using dsp coordinates available in the presets folder under XSPATIO-SEG.
 
@@ -88,6 +90,63 @@ The GENE_EXP_FILE.csv file should look like:
 patient_id,slide_id,label
 patient_0,slide_1,low_expression_genes
 patient_1,slide_2,high_expression_genes
+```
+
+Next, we define the task in create_split_seq.py, main.py, and eval.py.
+
+We create splits using the following command:
+```bash
+python3 create_splits_seq.py --task gene_exp --seed 1 --k 12
+```
+--task is the task we just defined, gene_exp
+
+--k is the number of folds, to make splits in the dataset. 10-fold follow distribution of (80/10/10) splits for the dataset. Ours was k=12 or (76/12/12).
+
+To run the training without interruptions run the command:
+tmux new -s “session”
+
+For training, run the following command:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 main.py \
+  --drop_out 0.25 \
+  --early_stopping \
+  --lr 2e-4 \
+  --k 12 \
+  --split_dir gene_exp \
+  --exp_code gene_exp_100 \
+  --weighted_sample \
+  --bag_loss ce \
+  --task gene_exp \
+  --model_type clam_sb \
+  --log_data \
+  --data_root_dir GENE_EXP \
+  --embed_dim 1024 \
+  > train.txt 2>&1 &
+```
+To evaluate the script execute the command below:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 eval.py \
+  --k 12 \
+  --models_exp_code SAVED_MODEL_RESULTS \
+  --save_exp_code EVAL_MODEL_RESULTS \
+  --task gene_exp \
+  --model_type clam_sb \
+  --results_dir results \
+  --data_root_dir GENE_EXP \
+  --embed_dim 1024 \
+  > eval.txt 2>&1 &
+
+```
+
+## Attention-Based Heatmap Generation
+
+Navigate to Heatmap/heatmaps/configs/config_template_dsp.yaml and customize the configuration template by specifying the biomarker name, corresponding trained model checkpoint, and desired output directories for heatmap generation.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 create_heatmaps.py \
+  --config config_template_dsp.yaml
 ```
 
 
