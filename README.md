@@ -42,7 +42,7 @@ Once we have the segmented patches, we proceed with extracting features using th
 python3 extract_features_fp.py \
   --data_h5_dir SEG_patches \
   --data_slide_dir ORIGINAL_ROI_FOLDER \
-  --csv_path ORIGINAL_ROI_FOLDER/process_list_autogen.csv \
+  --csv_path SEG_patches/process_list_autogen.csv \
   --model_name uni_v1 \
   --feat_dir tma_extracted_features \
   --batch_size 512 \
