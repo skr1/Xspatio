@@ -113,6 +113,7 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
   --early_stopping \
   --lr 2e-4 \
   --k 12 \
+  --B 3
   --split_dir gene_exp \
   --exp_code gene_exp_100 \
   --weighted_sample \
