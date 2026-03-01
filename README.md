@@ -146,7 +146,7 @@ CUDA_VISIBLE_DEVICES=0 python3 eval.py \
 Navigate to Heatmap/heatmaps/configs/config_template_dsp.yaml and customize the configuration template by specifying the biomarker name, corresponding trained model checkpoint, and desired output directories for heatmap generation.
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python3 create_heatmaps.py \
+CUDA_VISIBLE_DEVICES=0 python3 create_heatmaps_dsp.py \
   --config config_template_dsp.yaml
 ```
 
