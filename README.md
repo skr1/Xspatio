@@ -100,7 +100,7 @@ python3 create_splits_seq.py --task gene_exp --seed 1 --k 12
 ```
 --task is the task we just defined, gene_exp
 
---k is the number of folds, to make splits in the dataset. 10-fold follow distribution of (80/10/10) splits for the dataset. Ours was k=12 or (76/12/12).
+--k is the number of repetitions for splitting dataset into 80:10:10 (Train:Validation:Test) configuration. We set k=12, so 12 repetitions of that splitting phenomena.  
 
 To run the training without interruptions run the command:
 tmux new -s “session”
