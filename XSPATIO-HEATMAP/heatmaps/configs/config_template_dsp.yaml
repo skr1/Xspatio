@@ -13,7 +13,7 @@ exp_arguments:
   batch_size: 256
 data_arguments: 
   # where is data stored; can be a single str path or a dictionary of key, data_dir mapping
-  data_dir: /home/ubuntu/CLAM/tma1+tma2_rois
+  data_dir: /home/ubuntu/CLAM/tnbc_rois
   # column name for key in data_dir (if a dict mapping is used)
   data_dir_key: None
   # csv list containing slide_ids (can additionally have seg/patch paramters, class labels, etc.)
@@ -30,7 +30,7 @@ data_arguments:
 patching_arguments:
   # arguments for patching
   patch_size: 128
-  overlap: 0.5
+  overlap: 0
   patch_level: 0
   custom_downsample: 1
 encoder_arguments:
@@ -43,7 +43,7 @@ model_arguments:
   model_type: clam_sb # see utils/eval_utils/
   initiate_fn: initiate_model # see utils/eval_utils/
   model_size: small
-  drop_out: 0.
+  drop_out: 0.25
   embed_dim: 1024
 heatmap_arguments:
   # downsample at which to visualize heatmap (-1 refers to downsample closest to 32x downsample)
